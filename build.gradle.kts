@@ -1,9 +1,7 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
-    apply(from = "versions.gradle.kts")
-    val kotlinVersion: String by extra
-
+    val kotlinVersion = "1.3.71"
     repositories {
         google()
         jcenter()
