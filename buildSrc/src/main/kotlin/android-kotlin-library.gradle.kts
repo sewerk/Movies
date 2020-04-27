@@ -1,24 +1,24 @@
 plugins {
-    id("com.android.application")
-    kotlin("android")
-    kotlin("android.extensions")
+    id("com.android.library")
+    id("kotlin-android")
+    id("kotlin-android-extensions")
 }
 
 android {
     compileSdkVersion(Android.targetSdk)
 
     defaultConfig {
-        applicationId = "pl.srw.movies"
         minSdkVersion(Android.minSdk)
         targetSdkVersion(Android.targetSdk)
         versionCode = 1
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
-        named("release") {
+        getByName("release") {
             isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
@@ -26,18 +26,8 @@ android {
 }
 
 dependencies {
-    implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
     implementation(Deps.kotlinStdlibJdk7)
     implementation(Deps.koinViewModel)
 
     implementation(Deps.Androidx.appCompat)
-    implementation(Deps.Androidx.coreKtx)
-    implementation(Deps.Androidx.constraintLayout)
-    implementation(Deps.Androidx.lifecycleEx)
-    implementation(Deps.Androidx.lifecycleViewModelKtx)
-
-    testImplementation(Deps.junit)
-
-    androidTestImplementation(Deps.Androidx.Test.junit)
-    androidTestImplementation(Deps.Androidx.Test.espressoCore)
 }
