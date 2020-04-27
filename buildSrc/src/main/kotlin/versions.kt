@@ -1,4 +1,5 @@
 const val kotlinVersion = "1.3.71"
+const val koinVersion = "2.1.5"
 const val junit = "4.13"
 
 object Androidx {
