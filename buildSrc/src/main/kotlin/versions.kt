@@ -15,6 +15,7 @@ object Deps {
 
     object Androidx {
         private const val lifecycle = "2.2.0"
+        private const val navigation = "2.3.0-alpha05"
 
         const val appCompat = "androidx.appcompat:appcompat:1.1.0"
         const val coreKtx = "androidx.core:core-ktx:1.2.0"
@@ -23,6 +24,9 @@ object Deps {
         const val lifecycleEx = "androidx.lifecycle:lifecycle-extensions:$lifecycle"
         const val lifecycleViewModelKtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle"
         const val dataBindingCompiler = "com.android.databinding:compiler:$androidGradlePlugin"
+
+        const val navigationFragmentKtx = "androidx.navigation:navigation-fragment-ktx:$navigation"
+        const val navigationUiKtx = "androidx.navigation:navigation-ui-ktx:$navigation"
 
         object Test {
             const val junit = "androidx.test.ext:junit:1.1.1"

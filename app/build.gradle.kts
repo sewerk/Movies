@@ -38,6 +38,8 @@ dependencies {
     implementation(Deps.Androidx.constraintLayout)
     implementation(Deps.Androidx.lifecycleEx)
     implementation(Deps.Androidx.lifecycleViewModelKtx)
+    implementation(Deps.Androidx.navigationFragmentKtx)
+    implementation(Deps.Androidx.navigationUiKtx)
 
     testImplementation(Deps.junit)
 
