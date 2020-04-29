@@ -1,2 +1,1 @@
-include("app")
-include("list")
+include("app", "list", "commons")

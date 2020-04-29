@@ -23,10 +23,13 @@ android {
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
+
+    dataBinding.isEnabled = true
 }
 
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
+    implementation(project(":list"))
     implementation(Deps.kotlinStdlibJdk7)
     implementation(Deps.koinViewModel)
 

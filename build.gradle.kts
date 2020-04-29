@@ -4,7 +4,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath("com.android.tools.build:gradle:3.6.3")
+        classpath("com.android.tools.build:gradle:$androidGradlePlugin")
         classpath(kotlin("gradle-plugin", version = kotlinVersion))
         classpath("org.koin:koin-gradle-plugin:$koinVersion")
     }

@@ -5,6 +5,7 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
 import pl.srw.movies.di.mainModule
+import pl.srw.movies.list.di.listModule
 
 class MoviesApp : Application() {
 
@@ -13,7 +14,7 @@ class MoviesApp : Application() {
         startKoin {
             if (BuildConfig.DEBUG) androidLogger()
             androidContext(this@MoviesApp)
-            modules(mainModule)
+            modules(mainModule, listModule)
         }
     }
 }

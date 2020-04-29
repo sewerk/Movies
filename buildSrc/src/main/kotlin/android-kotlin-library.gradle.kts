@@ -2,6 +2,7 @@ plugins {
     id("com.android.library")
     id("kotlin-android")
     id("kotlin-android-extensions")
+    kotlin("kapt")
 }
 
 android {
@@ -23,11 +24,15 @@ android {
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
+
+    dataBinding.isEnabled = true
 }
 
 dependencies {
     implementation(Deps.kotlinStdlibJdk7)
     implementation(Deps.koinViewModel)
 
+    kapt(Deps.Androidx.dataBindingCompiler)
     implementation(Deps.Androidx.appCompat)
+    implementation(Deps.Androidx.lifecycleViewModelKtx)
 }
