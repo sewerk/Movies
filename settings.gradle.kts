@@ -1,1 +1,6 @@
-include("app", "list", "commons")
+include(
+    "app",
+    "list",
+    "commons",
+    "commons-test"
+)

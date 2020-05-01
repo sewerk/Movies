@@ -3,6 +3,7 @@ plugins {
     id("kotlin-android")
     id("kotlin-android-extensions")
     kotlin("kapt")
+    id("de.mannodermaus.android-junit5")
 }
 
 android {
@@ -14,7 +15,6 @@ android {
         versionCode = 1
         versionName = "1.0"
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
     }
 
@@ -29,10 +29,12 @@ android {
 }
 
 dependencies {
+    kapt(Deps.Androidx.dataBindingCompiler)
+
     implementation(Deps.kotlinStdlibJdk7)
     implementation(Deps.koinViewModel)
-
-    kapt(Deps.Androidx.dataBindingCompiler)
     implementation(Deps.Androidx.appCompat)
     implementation(Deps.Androidx.lifecycleViewModelKtx)
+
+    testImplementation(project(":commons-test"))
 }

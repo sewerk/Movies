@@ -4,9 +4,9 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath("com.android.tools.build:gradle:$androidGradlePlugin")
-        classpath(kotlin("gradle-plugin", version = kotlinVersion))
-        classpath("org.koin:koin-gradle-plugin:$koinVersion")
+        classpath("com.android.tools.build:gradle:${Versions.androidGradlePlugin}")
+        classpath(kotlin("gradle-plugin", version = Versions.kotlin))
+        classpath("org.koin:koin-gradle-plugin:${Versions.koin}")
     }
 }
 

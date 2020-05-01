@@ -34,14 +34,7 @@ dependencies {
     implementation(Deps.koinViewModel)
 
     implementation(Deps.Androidx.appCompat)
-    implementation(Deps.Androidx.coreKtx)
-    implementation(Deps.Androidx.constraintLayout)
-    implementation(Deps.Androidx.lifecycleEx)
-    implementation(Deps.Androidx.lifecycleViewModelKtx)
     implementation(Deps.Androidx.navigationFragmentKtx)
-    implementation(Deps.Androidx.navigationUiKtx)
-
-    testImplementation(Deps.junit)
 
     androidTestImplementation(Deps.Androidx.Test.junit)
     androidTestImplementation(Deps.Androidx.Test.espressoCore)
