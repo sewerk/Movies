@@ -21,4 +21,5 @@ dependencies {
     api(Deps.Test.mockitoKt)
     api(Deps.Test.mockitoInline)
     api(Deps.Test.kluent)
+    api(Deps.Test.coroutines)
 }

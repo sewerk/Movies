@@ -1,3 +1,5 @@
+import com.android.build.gradle.internal.cxx.configure.gradleLocalProperties
+
 plugins {
     id("com.android.application")
     kotlin("android")
@@ -15,6 +17,8 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String", "API_KEY", gradleLocalProperties(rootDir).getProperty("apiKey"))
     }
 
     buildTypes {
@@ -32,9 +36,14 @@ dependencies {
     implementation(project(":list"))
     implementation(Deps.kotlinStdlibJdk7)
     implementation(Deps.koinViewModel)
+    implementation(Deps.timber)
 
     implementation(Deps.Androidx.appCompat)
     implementation(Deps.Androidx.navigationFragmentKtx)
+
+    implementation(Deps.retrofit)
+    implementation(Deps.retrofitMoshiConverter)
+    implementation(Deps.okHttpLoggingInterceptor)
 
     androidTestImplementation(Deps.Androidx.Test.junit)
     androidTestImplementation(Deps.Androidx.Test.espressoCore)
