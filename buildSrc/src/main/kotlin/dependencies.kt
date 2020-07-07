@@ -1,7 +1,7 @@
 object Versions {
     const val kotlin = "1.3.71"
     const val koin = "2.1.5"
-    const val androidGradlePlugin = "3.6.3"
+    const val androidGradlePlugin = "4.0.0"
 }
 
 object Android {

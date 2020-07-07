@@ -9,7 +9,7 @@ repositories {
 
 dependencies {
     val kotlin = "1.3.71"
-    val androidGradlePlugin = "3.6.3"
+    val androidGradlePlugin = "4.0.0"
     val junitPlugin = "1.6.0.0"
 
     implementation("com.android.tools.build:gradle:$androidGradlePlugin")
