@@ -48,6 +48,6 @@ object Deps {
         const val mockitoInline = "org.mockito:mockito-inline:3.3.3"
         const val mockitoKt = "com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0"
         const val kluent = "org.amshove.kluent:kluent-android:1.61"
-        const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.3.4"
+        const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.3.7"
     }
 }

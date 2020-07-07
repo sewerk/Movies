@@ -18,7 +18,6 @@ import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
-import org.junit.jupiter.api.extension.ExtensionContext
 import pl.srw.movies.commons.api.Movie
 import pl.srw.movies.commons.test.InstantTaskExecutorExtension
 import pl.srw.movies.commons.utils.UiState
@@ -29,22 +28,21 @@ import java.io.IOException
 @ExtendWith(InstantTaskExecutorExtension::class)
 internal class ListViewModelTest {
 
-    val testDispatcher: TestCoroutineDispatcher = TestCoroutineDispatcher()
+    val testDispatcher = TestCoroutineDispatcher()
+
+    val repository: MovieRepository = mock()
+    val tested by lazy { ListViewModel(repository) }
 
     @BeforeEach
-    fun beforeEach(context: ExtensionContext?) {
+    fun beforeEach() {
         Dispatchers.setMain(testDispatcher)
     }
 
     @AfterEach
-    fun afterEach(context: ExtensionContext?) {
+    fun afterEach() {
         Dispatchers.resetMain()
         testDispatcher.cleanupTestCoroutines()
     }
-
-    val repository: MovieRepository = mock()
-
-    val tested by lazy { ListViewModel(repository, testDispatcher) }
 
     @Test
     fun `when created then ui state is in progress`() {
