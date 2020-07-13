@@ -32,6 +32,7 @@ object Deps {
         const val recyclerView = "androidx.recyclerview:recyclerview:1.1.0"
         const val lifecycleEx = "androidx.lifecycle:lifecycle-extensions:$lifecycleVersion"
         const val lifecycleViewModelKtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"
+        const val lifecycleLiveDataKtx = "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion"
         const val dataBindingCompiler = "com.android.databinding:compiler:${Versions.androidGradlePlugin}"
 
         const val navigationFragmentKtx = "androidx.navigation:navigation-fragment-ktx:$navigationVersion"

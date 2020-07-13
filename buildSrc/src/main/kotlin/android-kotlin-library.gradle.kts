@@ -35,6 +35,7 @@ dependencies {
     implementation(Deps.koinViewModel)
     implementation(Deps.Androidx.appCompat)
     implementation(Deps.Androidx.lifecycleViewModelKtx)
+    implementation(Deps.Androidx.lifecycleLiveDataKtx)
     implementation(Deps.timber)
 
     testImplementation(project(":commons-test"))

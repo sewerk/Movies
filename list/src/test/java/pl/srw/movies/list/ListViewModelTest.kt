@@ -20,6 +20,7 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import pl.srw.movies.commons.api.Movie
 import pl.srw.movies.commons.test.InstantTaskExecutorExtension
+import pl.srw.movies.commons.test.test
 import pl.srw.movies.commons.utils.UiState
 import pl.srw.movies.list.repo.MovieRepository
 import java.io.IOException
@@ -45,17 +46,28 @@ internal class ListViewModelTest {
     }
 
     @Test
-    fun `when created then ui state is in progress`() {
-        testDispatcher.pauseDispatcher()
+    fun `when created then ui state is in progress`() = testDispatcher.runBlockingTest {
+        val observer = tested.state.test()
 
-        tested.state.value shouldBeInstanceOf UiState.InProgress::class
+        observer.assertValueAt(0) {
+            it shouldBeInstanceOf UiState.InProgress::class
+        }
     }
 
     @Test
-    fun `when created then movie list is fetched`() = testDispatcher.runBlockingTest {
-        tested
+    fun `when created then Android movie list is fetched`() = testDispatcher.runBlockingTest {
+        tested.state.test()
 
         verify(repository).fetchMovies("Android", 1)
+    }
+
+    @Test
+    fun `when fetch movie called then movie list for query is fetched`() = testDispatcher.runBlockingTest {
+        tested.state.test()
+
+        tested.fetchMovies("Any")
+
+        verify(repository).fetchMovies("Any", 1)
     }
 
     @Test
@@ -63,13 +75,21 @@ internal class ListViewModelTest {
         val responseList = listOf(Movie(""))
         whenever(repository.fetchMovies(any(), any())) doReturn responseList
 
-        (tested.state.value as UiState.Success).data shouldBeEqualTo responseList
+        val observer = tested.state.test()
+
+        observer.assertValueAt(1) {
+            (it as UiState.Success).data shouldBeEqualTo responseList
+        }
     }
 
     @Test
     fun `when movie list fetch failed then state is error`() = testDispatcher.runBlockingTest {
         whenever(repository.fetchMovies(any(), any())) doThrow IOException()
 
-        tested.state.value shouldBeInstanceOf UiState.Error::class
+        val observer = tested.state.test()
+
+        observer.assertValueAt(1) {
+            it shouldBeInstanceOf UiState.Error::class
+        }
     }
 }
