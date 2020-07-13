@@ -14,15 +14,18 @@ internal class ListViewModel(
     private val repo: MovieRepository
 ) : ViewModel() {
 
+    var searchQuery: String = "Android"
+
     private val _state = MutableLiveData<UiState<List<Movie>>>()
     val state = liveData {
         emit(UiState.InProgress)
-        emit(fetchMoviesResult("Android"))
+        emit(fetchMoviesResult(searchQuery))
         emitSource(_state)
     }
 
     fun fetchMovies(query: String) {
         viewModelScope.launch {
+            searchQuery = query
             _state.value = fetchMoviesResult(query)
         }
     }

@@ -34,6 +34,7 @@ dependencies {
     implementation(Deps.kotlinStdlibJdk7)
     implementation(Deps.koinViewModel)
     implementation(Deps.Androidx.appCompat)
+    implementation(Deps.Androidx.material)
     implementation(Deps.Androidx.lifecycleViewModelKtx)
     implementation(Deps.Androidx.lifecycleLiveDataKtx)
     implementation(Deps.timber)

@@ -39,6 +39,7 @@ dependencies {
     implementation(Deps.timber)
 
     implementation(Deps.Androidx.appCompat)
+    implementation(Deps.Androidx.material)
     implementation(Deps.Androidx.navigationFragmentKtx)
 
     implementation(Deps.retrofit)

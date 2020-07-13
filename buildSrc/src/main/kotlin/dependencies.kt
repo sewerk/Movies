@@ -34,6 +34,7 @@ object Deps {
         const val lifecycleViewModelKtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"
         const val lifecycleLiveDataKtx = "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion"
         const val dataBindingCompiler = "com.android.databinding:compiler:${Versions.androidGradlePlugin}"
+        const val material = "com.google.android.material:material:1.1.0"
 
         const val navigationFragmentKtx = "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
         const val navigationUiKtx = "androidx.navigation:navigation-ui-ktx:$navigationVersion"

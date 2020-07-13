@@ -1,20 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout  xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="data"
             type="pl.srw.movies.commons.api.Movie" />
-        
+
     </data>
 
-    <ImageView
-        android:id="@+id/posterView"
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="200dp"
         android:layout_height="300dp"
-        android:contentDescription="@string/movie_poster_desc"
-        app:imageUrl="@{data.posterUrl}"
-        app:placeholder="@{@drawable/placeholder}"
-        android:scaleType="fitCenter" />
+        android:layout_margin="4dp"
+        app:cardCornerRadius="4dp"
+        app:cardBackgroundColor="#DDE1E3">
+
+        <ImageView
+            android:id="@+id/posterView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/movie_poster_desc"
+            android:scaleType="fitCenter"
+            app:imageUrl="@{data.posterUrl}"
+            app:placeholder="@{@drawable/placeholder}" />
+    </com.google.android.material.card.MaterialCardView>
 </layout>

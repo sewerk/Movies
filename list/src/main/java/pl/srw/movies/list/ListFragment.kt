@@ -2,10 +2,15 @@ package pl.srw.movies.list
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.list_fragment.*
+import kotlinx.android.synthetic.main.list_fragment.view.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import pl.srw.movies.commons.utils.UiState
 import pl.srw.movies.commons.utils.exhaustive
@@ -33,7 +38,17 @@ class ListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setupToolBar(view)
         listView.adapter = listAdapter
+        handleContentChanges()
+    }
+
+    private fun setupToolBar(view: View) {
+        setHasOptionsMenu(true)
+        (requireActivity() as AppCompatActivity).setSupportActionBar(view.toolbar)
+    }
+
+    private fun handleContentChanges() {
         observe(viewModel.state) {
             var inProgress = View.GONE
             when (it) {
@@ -43,5 +58,27 @@ class ListFragment : Fragment() {
             }.exhaustive
             binding.progressVisibility = inProgress
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, menuInflater: MenuInflater) {
+        menuInflater.inflate(R.menu.list_menu, menu)
+
+        val searchItem = menu.findItem(R.id.action_search)
+        val searchView = searchItem?.actionView as SearchView
+        searchView.setOnSearchClickListener {
+            searchView.setQuery(viewModel.searchQuery, false)
+        }
+
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(newQuery: String?): Boolean {
+                newQuery?.let {
+                    viewModel.fetchMovies(newQuery)
+                }
+                searchView.onActionViewCollapsed()
+                return true
+            }
+
+            override fun onQueryTextChange(query: String?): Boolean = false
+        })
     }
 }
