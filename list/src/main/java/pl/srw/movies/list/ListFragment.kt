@@ -67,6 +67,7 @@ class ListFragment : Fragment() {
         val searchView = searchItem?.actionView as SearchView
         searchView.setOnSearchClickListener {
             searchView.setQuery(viewModel.searchQuery, false)
+            toolbar.setTitle(R.string.app_name)
         }
 
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
@@ -75,6 +76,7 @@ class ListFragment : Fragment() {
                     viewModel.fetchMovies(newQuery)
                 }
                 searchView.onActionViewCollapsed()
+                toolbar.title = "${toolbar.title}: ${viewModel.searchQuery}"
                 return true
             }
 

@@ -24,6 +24,7 @@ internal class ListViewModel(
     }
 
     fun fetchMovies(query: String) {
+        if (searchQuery == query) return
         viewModelScope.launch {
             searchQuery = query
             _state.value = fetchMoviesResult(query)

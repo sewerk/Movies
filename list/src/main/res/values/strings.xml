@@ -2,4 +2,5 @@
 <resources>
     <string name="movie_poster_desc">Movie poster</string>
     <string name="search">Search</string>
+    <item type="string" name="app_name" />
 </resources>

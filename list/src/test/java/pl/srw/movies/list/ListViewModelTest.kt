@@ -1,10 +1,12 @@
 package pl.srw.movies.list
 
 import com.nhaarman.mockitokotlin2.any
+import com.nhaarman.mockitokotlin2.clearInvocations
 import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.doThrow
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify
+import com.nhaarman.mockitokotlin2.verifyNoMoreInteractions
 import com.nhaarman.mockitokotlin2.whenever
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -62,12 +64,27 @@ internal class ListViewModelTest {
     }
 
     @Test
-    fun `when fetch movie called then movie list for query is fetched`() = testDispatcher.runBlockingTest {
-        tested.state.test()
-
+    fun `when fetch movies called then movie list for query is fetched`() = testDispatcher.runBlockingTest {
         tested.fetchMovies("Any")
 
         verify(repository).fetchMovies("Any", 1)
+    }
+
+    @Test
+    fun `when fetch movies called then search query is updated`() {
+        tested.fetchMovies("Any")
+
+        tested.searchQuery shouldBeEqualTo "Any"
+    }
+
+    @Test
+    fun `when fetch movies by same query then movies are not fetched`() {
+        tested.fetchMovies("Any")
+        clearInvocations(repository)
+
+        tested.fetchMovies("Any")
+
+        verifyNoMoreInteractions(repository)
     }
 
     @Test
