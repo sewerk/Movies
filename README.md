@@ -2,17 +2,19 @@
 based on <https://www.omdbapi.com/> REST API .
 
 ## This project showcase integration of following libraries:
-- Jetpack: ViewModel, LiveData, DataBinding, Navigation
-- Kotlin Coroutines
-- Koin
-- Retrofit 2
-- Moshi
+- Jetpack [Architecture Components](https://developer.android.com/topic/libraries/architecture/): ViewModel, LiveData, DataBinding, Navigation, Compose, Room, Paging, Store
+- [Kotlin Coroutines](https://kotlinlang.org/docs/reference/coroutines/coroutines-guide.html) + Flow
+- [Hilt](https://dagger.dev/hilt/)
+- Retrofit 2 + Moshi
 - Glide
 - Timber
-- Junit5
-- Mockito Kotlin
-- Kluent
+- [Junit5](https://junit.org/junit5) + Mockito Kotlin + Kluent
 - Gradle Kotlin DSL
+
+## Features:
+- allows to search movies by title (saves state)
+- displays movies details
+- works offline, database is sync in background
 
 ## License
 
